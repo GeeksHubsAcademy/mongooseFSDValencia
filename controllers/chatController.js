@@ -7,6 +7,10 @@ class Sala {
         return Room.find();
     }
 
+    async deleteRoom(id){
+        return Room.findByIdAndDelete(id);
+    }
+
     async createRoom(room){
         return Room.create(room);
     }

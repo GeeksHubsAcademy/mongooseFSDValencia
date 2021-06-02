@@ -63,4 +63,16 @@ router.post('/addmessage', async (req, res) => {
     }
 });
 
+
+router.post('/deletechat', async (req, res) => {
+    try{
+        const id = req.body;
+        res.json(await chatController.deleteRoom(id));
+    }catch (err){
+        return res.status(500).json({
+            message: err.message
+        })
+    }
+})
+
 module.exports = router;
