@@ -64,9 +64,9 @@ router.post('/addmessage', async (req, res) => {
 });
 
 
-router.post('/deletechat', async (req, res) => {
+router.delete('/', async (req, res) => {
     try{
-        const id = req.body;
+        const id = req.body.id;
         res.json(await chatController.deleteRoom(id));
     }catch (err){
         return res.status(500).json({

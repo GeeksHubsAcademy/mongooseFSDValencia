@@ -8,7 +8,8 @@ class Sala {
     }
 
     async deleteRoom(id){
-        return Room.findByIdAndDelete(id);
+        //return Room.findByIdAndDelete(id) --> deprecated......
+        return Room.findByIdAndRemove(id);
     }
 
     async createRoom(room){

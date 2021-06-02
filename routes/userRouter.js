@@ -29,4 +29,16 @@ router.post('/', async (req,res) => {
     }
 })
 
+
+router.put('/', async (req, res) => {
+    try{
+        const data = req.body;
+        res.json(await userController.modifyProfile(data));
+    }catch (err) {
+        return res.status(500).json({
+            message: err.message
+        })
+    }
+})
+
 module.exports = router;

@@ -15,6 +15,17 @@ class Cliente {
         return User.create(user);
     }
 
+    async modifyProfile(data){
+        return User.findByIdAndUpdate(
+            {_id: data.id},
+            //Datos que cambiamos
+            { email: data.email,
+              country: data.country,
+              city: data.city,
+              isActive: data.isActive },
+              {new:true,omitUndefined:true}
+        )
+    }
 }
 
 
