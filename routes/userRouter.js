@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const userController = require('../controllers/userController');
+const jwt = require('jsonwebtoken');
 
 
 
@@ -28,6 +29,20 @@ router.post('/', async (req,res) => {
         })
     }
 })
+
+router.post('/login',async (req, res) => {
+    try{
+        const {email,password} = req.body;
+        const jwt = await userController.logMe(email,password);
+        const token = jwt.token;
+        const user = jwt.user;
+        res.json({token,user});
+    } catch (err) {
+        return res.status(401).json({
+            message: err.message
+        });
+    }
+});
 
 
 router.put('/', async (req, res) => {
